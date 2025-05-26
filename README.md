@@ -1,9 +1,8 @@
 ---
-title: Engelsiz
+title: A
 emoji: 🔥
-colorFrom: purple
+colorFrom: blue
 colorTo: red
 sdk: docker
 pinned: false
-short_description: No Vpn
 ---
