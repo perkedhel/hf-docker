@@ -1,8 +1,8 @@
 ---
-title: cloudstream
-emoji: 👀
-colorFrom: blue
-colorTo: red
+title: Remote
+emoji: 🌍
+colorFrom: pink
+colorTo: blue
 sdk: docker
 pinned: false
 ---
