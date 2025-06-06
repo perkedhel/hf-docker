@@ -1,6 +1,6 @@
 # Just change the cron time and Set timezone lines if it necessarry. Or secret variables if you set them different.
 
-name: Rebuild HF
+name: sync-hf
 on:
   schedule:
     - cron: '0 */2 * * *' # Runs in every 2 hours to build it. You can change the 2 to whatever you want.
@@ -14,10 +14,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set timezone to Europe/Istanbul
+      - name: Set timezone to Asia/Jakarta
         run: |
-          sudo timedatectl set-timezone Europe/Istanbul # You can change this lines according to your own time zone.
-          export TZ="Europe/Istanbul"
+          sudo timedatectl set-timezone Asia/Jakarta # You can change this lines according to your own time zone.
+          export TZ="Asia/Jakarta"
 
       - name: Add timestamp to Dockerfile
         run: |
@@ -26,10 +26,11 @@ jobs:
 
       - name: Commit and push it HuggingFace
         run: |
-          git config --global user.name "🔥 Latte HF Rebuilder 🔥"
-          git config --global user.email "GitLatte@github.com"
+          git config --global user.name "actions-user"
+          git config --global user.email "action@github.com"
           git add Dockerfile
-          git commit -m "♻️ Success rebuild to HuggingFace space $NOWDATE"
+          git commit -m "Rebuild Success $NOWDATE"
+          git push --force
           git push -f https://oauth2:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} main
         env:
           HF_SPACE_NAME: ${{ vars.HF_SPACE_NAME }}
