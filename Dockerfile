@@ -15,6 +15,7 @@ WORKDIR /app/daddylive  # pass to work dir
 RUN git pull || git clone https://github.com/pigzillaaaaa/daddylive .
 
 RUN pip install flask curl-cffi m3u8 gunicorn
+RUN echo 'Rebuild at 2025-06-07 11:14:24' >> /app/rebuild.log
 RUN echo 'Rebuild at 2025-06-07 10:07:54' >> /app/rebuild.log
 RUN echo 'Rebuild at 2025-06-07 07:55:19' >> /app/rebuild.log
 RUN echo 'Rebuild at 2025-06-07 05:10:41' >> /app/rebuild.log
